@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <com.social.socialcommunication.custom_view.CustomTextviewFont
+        android:id="@+id/txtTitleLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="@string/text_login"
+        android:textColor="@color/text_color_black1"
+        android:textSize="26sp"
+        app:font_type="@string/typeface_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.social.socialcommunication.custom_view.CustomTextviewFont
+        android:id="@+id/txtTitleInputEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/text_login_email_input"
+        android:textColor="@color/text_color_gray1"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleLogin" />
+
+    <com.social.socialcommunication.custom_view.CustomEdittextFont
+        android:id="@+id/edtInputEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:textColor="@color/text_color_black2"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleInputEmail" />
+
+    <com.social.socialcommunication.custom_view.CustomTextviewFont
+        android:id="@+id/txtTitleInputPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/text_login_password_input"
+        android:textColor="@color/text_color_gray1"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtInputEmail" />
+
+    <com.social.socialcommunication.custom_view.CustomEdittextFont
+        android:id="@+id/edtInputPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:paddingRight="40dp"
+        android:textColor="@color/text_color_black2"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleInputPassword"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <ImageView
+        android:id="@+id/btnShowHidePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_no_view_password"
+        app:layout_constraintBottom_toBottomOf="@id/edtInputPassword"
+        app:layout_constraintEnd_toEndOf="@id/edtInputPassword"
+        app:layout_constraintTop_toTopOf="@id/edtInputPassword" />
+
+    <com.social.socialcommunication.custom_view.CustomTextviewFont
+        android:id="@+id/txtForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/text_forgot_password"
+        android:textColor="@color/text_color_gray2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtInputPassword" />
+
+    <com.social.socialcommunication.custom_view.CustomButtonFont
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_button_blue_rd_5"
+        android:text="@string/text_login"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/btnToViewRegister" />
+
+    <com.social.socialcommunication.custom_view.CustomButtonFont
+        android:id="@+id/btnToViewRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_blue_rd_5_strike"
+        android:text="@string/text_register"
+        android:textAllCaps="false"
+        android:textColor="@color/blueDark"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

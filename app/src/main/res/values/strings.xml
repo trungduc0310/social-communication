@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Social Communication</string>
     <string name="typeface_regular">fonts/quicksand/quicksand_regular.ttf</string>
+    <string name="typeface_medium">fonts/quicksand/quicksand_medium.ttf</string>
+    <string name="typeface_bold">fonts/quicksand/quicksand_bold.ttf</string>
+    <string name="typeface_semibold">fonts/quicksand/quicksand_semibold.ttf</string>
+    <string name="typeface_light">fonts/quicksand/quicksand_light.ttf</string>
+    <string name="text_login">Đăng nhập</string>
+    <string name="text_login_email_input">Email hoặc số điện thoại</string>
+    <string name="text_login_password_input">Password</string>
+    <string name="text_forgot_password">Forgot your password</string>
+    <string name="text_register">Đăng ký</string>
 </resources>
