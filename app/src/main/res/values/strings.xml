@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Social Communication</string>
+    <string name="typeface_regular">fonts/quicksand/quicksand_regular.ttf</string>
+</resources>
