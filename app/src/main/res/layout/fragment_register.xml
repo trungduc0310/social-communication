@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="100dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:src="@drawable/ic_arrow_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.social.socialcommunication.custom_view.CustomTextviewFont
+                android:id="@+id/txtTitleLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
+                android:text="@string/text_register"
+                android:textColor="@color/text_color_black1"
+                android:textSize="26sp"
+                app:font_type="@string/typeface_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.social.socialcommunication.custom_view.CustomTextviewFont
+                android:id="@+id/txtTitleInputFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:text="@string/text_full_name"
+                android:textColor="@color/text_color_gray1"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitleLogin" />
+
+            <com.social.socialcommunication.custom_view.CustomEdittextFont
+                android:id="@+id/edtInputFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="1"
+                android:textColor="@color/text_color_black2"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputFullName" />
+
+            <com.social.socialcommunication.custom_view.CustomTextviewFont
+                android:id="@+id/txtTitleInputBirthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/text_birthday"
+                android:textColor="@color/text_color_gray1"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtInputFullName" />
+
+            <com.social.socialcommunication.custom_view.CustomEdittextFont
+                android:id="@+id/edtInputBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="1"
+                android:textColor="@color/text_color_black2"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputBirthday" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_calendar_gray"
+                app:layout_constraintBottom_toBottomOf="@id/edtInputBirthday"
+                app:layout_constraintEnd_toEndOf="@id/edtInputBirthday"
+                app:layout_constraintTop_toTopOf="@id/edtInputBirthday" />
+
+            <com.social.socialcommunication.custom_view.CustomTextviewFont
+                android:id="@+id/txtTitleInputGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/text_gender"
+                android:textColor="@color/text_color_gray1"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtInputBirthday" />
+
+            <RadioGroup
+                android:id="@+id/rbtn_gr_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@id/txtTitleInputGender">
+
+                <com.social.socialcommunication.custom_view.CustomRadiobuttonFont
+                    android:id="@+id/rbtn_gender_man"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/text_gender_man"
+                    android:textColor="@color/text_color_black1"
+                    android:theme="@style/CustomThemeRadioButton" />
+
+                <com.social.socialcommunication.custom_view.CustomRadiobuttonFont
+                    android:id="@+id/rbtn_gender_female"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/text_gender_female"
+                    android:textColor="@color/text_color_black1"
+                    android:theme="@style/CustomThemeRadioButton" />
+            </RadioGroup>
+
+            <com.social.socialcommunication.custom_view.CustomTextviewFont
+                android:id="@+id/txtTitleInputPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/text_phone_number"
+                android:textColor="@color/text_color_gray1"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rbtn_gr_gender" />
+
+            <com.social.socialcommunication.custom_view.CustomEdittextFont
+                android:id="@+id/edtInputPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="1"
+                android:textColor="@color/text_color_black2"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputPhoneNumber" />
+
+            <com.social.socialcommunication.custom_view.CustomTextviewFont
+                android:id="@+id/txtTitleInputEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/text_email"
+                android:textColor="@color/text_color_gray1"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtInputPhoneNumber" />
+
+            <com.social.socialcommunication.custom_view.CustomEdittextFont
+                android:id="@+id/edtInputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="1"
+                android:textColor="@color/text_color_black2"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputEmail" />
+
+            <com.social.socialcommunication.custom_view.CustomTextviewFont
+                android:id="@+id/txtTitleInputPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/text_login_password_input"
+                android:textColor="@color/text_color_gray1"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtInputEmail" />
+
+            <com.social.socialcommunication.custom_view.CustomEdittextFont
+                android:id="@+id/edtInputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingRight="40dp"
+                android:textColor="@color/text_color_black2"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputPassword" />
+
+            <ImageView
+                android:id="@+id/btnShowHidePassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_no_view_password"
+                app:layout_constraintBottom_toBottomOf="@id/edtInputPassword"
+                app:layout_constraintEnd_toEndOf="@id/edtInputPassword"
+                app:layout_constraintTop_toTopOf="@id/edtInputPassword" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.social.socialcommunication.custom_view.CustomTextviewFont
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_button_create_account"
+        android:enabled="false"
+        android:gravity="center"
+        android:paddingTop="13dp"
+        android:paddingBottom="13dp"
+        android:text="@string/text_create_account"
+        android:textColor="@color/button_create_account"
+        android:textSize="12sp" />
+
+
+</RelativeLayout>

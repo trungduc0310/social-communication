@@ -10,6 +10,8 @@
     <color name="blueDark">#005AAB</color>
     <color name="text_color_black1">#212121</color>
     <color name="text_color_black2">#323643</color>
+    <color name="text_color_black3">#333333 </color>
     <color name="text_color_gray1">#8F333333</color>
     <color name="text_color_gray2">#9DA3B4</color>
+    <color name="gray1">#e0e0e0</color>
 </resources>

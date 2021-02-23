@@ -10,4 +10,12 @@
     <string name="text_login_password_input">Password</string>
     <string name="text_forgot_password">Forgot your password</string>
     <string name="text_register">Đăng ký</string>
+    <string name="text_full_name">Họ tên (*)</string>
+    <string name="text_birthday">Ngày sinh</string>
+    <string name="text_gender">Giới tính</string>
+    <string name="text_gender_man">Nam</string>
+    <string name="text_gender_female">Nữ</string>
+    <string name="text_phone_number">Số điện thoại (*)</string>
+    <string name="text_email">Email</string>
+    <string name="text_create_account">Tạo mới</string>
 </resources>
