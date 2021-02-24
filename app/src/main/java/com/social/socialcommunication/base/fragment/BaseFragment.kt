@@ -92,6 +92,26 @@ public abstract class BaseFragment<P : FragmentPresenterViewOps> : Fragment(), F
         }
     }
 
+    override fun getApplicationContext(): Context? {
+        try {
+            val activity = activity as BaseActivity<*>
+            return activity.applicationContext
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+        return null
+    }
+
+    override fun getActivityContext(): Context? {
+        try {
+            val activity = activity as BaseActivity<*>
+            return activity.getActivityContext()
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+        return null
+    }
+
     override fun getTakePhotoUtils(): TakePhotoUtils? {
         try {
             val activity = activity as BaseActivity<*>
@@ -316,7 +336,7 @@ public abstract class BaseFragment<P : FragmentPresenterViewOps> : Fragment(), F
     }
 
     abstract fun getViewResoure(): Int
-    abstract fun setUp(view: View): Int
+    abstract fun setUp(view: View)
 
     fun runOnUIThread(runnable: Runnable) {
         if (activity != null) {

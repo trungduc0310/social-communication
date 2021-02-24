@@ -7,8 +7,8 @@ import com.social.socialcommunication.base.BaseViewOps
 import com.tuanfadbg.takephotoutils.TakePhotoUtils
 
 interface FragmentViewOps : BaseViewOps {
-    fun getActivityContext(): Context
-    fun getApplicationContext(): Context
+    fun getActivityContext(): Context?
+    fun getApplicationContext(): Context?
     fun getTakePhotoUtils(): TakePhotoUtils?
     fun showProgressbar()
     fun hideProgressbar()

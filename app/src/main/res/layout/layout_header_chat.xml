@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="4dp">
+    android:background="@color/blueDark">
 
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="44dp"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_arrow_left_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -17,6 +19,8 @@
         android:id="@+id/btnInfoChat"
         android:layout_width="44dp"
         android:layout_height="44dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_info_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +29,8 @@
         android:id="@+id/btnVideoCall"
         android:layout_width="44dp"
         android:layout_height="44dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_camera_call_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnInfoChat"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +39,8 @@
         android:id="@+id/btnCall"
         android:layout_width="44dp"
         android:layout_height="44dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_call_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnVideoCall"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,6 +50,8 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
+        android:text="Nguyễn Hoàng Trường"
+        android:textColor="@color/white"
         android:textSize="16dp"
         app:font_type="@string/typeface_bold"
         app:layout_constraintBottom_toBottomOf="@id/btnBack"

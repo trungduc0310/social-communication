@@ -7,5 +7,89 @@
     android:layout_height="match_parent"
     tools:context=".screen.main.MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_default">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/layout_header_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/lnTabLayout"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+        <LinearLayout
+            android:id="@+id/lnTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tabChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imgChat"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="6dp"
+                    android:src="@drawable/icon_tab_chat_main"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.social.socialcommunication.custom_view.CustomTextviewFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/text_chat"
+                    android:textColor="@color/text_tab_main"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/imgChat"
+                    app:layout_constraintStart_toStartOf="@id/imgChat"
+                    app:layout_constraintTop_toBottomOf="@id/imgChat" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tabContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imgContact"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/icon_tab_contact_main"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.social.socialcommunication.custom_view.CustomTextviewFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/text_contact"
+                    android:textColor="@color/text_tab_main"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/imgContact"
+                    app:layout_constraintStart_toStartOf="@id/imgContact"
+                    app:layout_constraintTop_toBottomOf="@id/imgContact" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

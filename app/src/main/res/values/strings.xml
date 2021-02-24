@@ -18,4 +18,8 @@
     <string name="text_phone_number">Số điện thoại (*)</string>
     <string name="text_email">Email</string>
     <string name="text_create_account">Tạo mới</string>
+    <string name="text_chat">Chat</string>
+    <string name="text_find">Tìm kiếm</string>
+    <string name="text_contact">Danh bạ</string>
+    <string name="text_input_messenger">Nhập tin nhắn...</string>
 </resources>

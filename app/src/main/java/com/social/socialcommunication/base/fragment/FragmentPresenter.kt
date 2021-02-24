@@ -2,7 +2,7 @@ package com.social.socialcommunication.base.fragment
 
 import com.social.socialcommunication.base.BasePresenter
 
-class FragmentPresenter<ViewTarget : FragmentViewOps> : BasePresenter<ViewTarget>(),
+open class FragmentPresenter<ViewTarget : FragmentViewOps> : BasePresenter<ViewTarget>(),
     FragmentPresenterViewOps {
     override fun onCreate() {
     }
