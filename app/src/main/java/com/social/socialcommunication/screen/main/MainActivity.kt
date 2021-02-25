@@ -15,6 +15,7 @@ import com.social.socialcommunication.base.activity.BaseActivity
 import com.social.socialcommunication.screen.list_chat.ListChatFragment
 import com.social.socialcommunication.screen.list_contact.ListContactFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_header_main.*
 
 class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.ViewOps,
     View.OnClickListener {
@@ -52,12 +53,38 @@ class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.V
     private fun switchTab(position: Int) {
         when (position) {
             0 -> {
-                //TODO Chat fragment
+                selectTabChat()
+                unselectTabContact()
             }
             1 -> {
-                //TODO Contact fragment
+                selectTabContact()
+                unselectTabChat()
             }
         }
+    }
+
+    private fun selectTabContact() {
+        tvViewNameMain.text = resources.getText(R.string.text_contact)
+        btnAddConversation.setImageResource(R.drawable.ic_add_member_white)
+        imgContact.isEnabled = true
+        tvContact.isEnabled = true
+    }
+
+    private fun unselectTabContact() {
+        imgContact.isEnabled = false
+        tvContact.isEnabled = false
+    }
+
+    private fun selectTabChat() {
+        tvViewNameMain.text = resources.getText(R.string.text_chat)
+        btnAddConversation.setImageResource(R.drawable.ic_edit_white)
+        imgChat.isEnabled = true
+        tvTextChat.isEnabled = true
+    }
+
+    private fun unselectTabChat() {
+        imgChat.isEnabled = false
+        tvTextChat.isEnabled = false
     }
 
     override fun onRegisterPresenter(): Class<out ActivityPresenter<ActivityViewOps>> {
@@ -94,13 +121,20 @@ class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.V
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.tabChat -> {
-                //TODO tabChatClick
+                vp_main.currentItem = 0
             }
             R.id.tabContact -> {
-                //TODO tabContactClick
+                vp_main.currentItem = 1
             }
             R.id.btnAddConversation -> {
-                //TODO addConversation(Chat) addContact(Contact)
+                when (vp_main.currentItem) {
+                    0 -> {
+                        //TODO add Conversation
+                    }
+                    1 -> {
+                        //TODO add contact
+                    }
+                }
             }
         }
     }

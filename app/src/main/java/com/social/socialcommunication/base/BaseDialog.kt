@@ -1,38 +1,35 @@
 package com.social.socialcommunication.base
 
+import android.app.Dialog
+import android.content.Context
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatDialogFragment
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
-import com.social.socialcommunication.R
+import android.view.Window
+import android.view.WindowManager
 
-public abstract class BaseDialog : AppCompatDialogFragment() {
+public abstract class BaseDialog : Dialog {
+    private lateinit var mContext: Context
+
+    constructor(context: Context, themeResId: Int) : super(context, themeResId) {
+        mContext = context
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window = window
+            window!!.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window!!.statusBarColor = Color.parseColor("#EBF0F7")
+        }
+        window!!.setWindowAnimations(themeResId)
+        val view = View.inflate(mContext, getViewResoure(), null)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        setContentView(view)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.MyDialogTheme)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(getViewResoure(), container, false)
-        setUp(view)
-        return view
-    }
-
-    override fun show(manager: FragmentManager, tag: String?) {
-        try {
-            super.show(manager, tag)
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
+        setUp()
     }
 
     abstract fun getViewResoure(): Int
-    abstract fun setUp(view: View)
+    abstract fun setUp()
 }

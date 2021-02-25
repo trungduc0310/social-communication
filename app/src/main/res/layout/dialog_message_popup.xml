@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#33000000">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="24dp"
+        android:background="@drawable/bg_white_corner_16"
+        android:paddingBottom="30dp">
+
+        <com.social.socialcommunication.custom_view.CustomTextviewFont
+            android:id="@+id/tvContentPopup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="34dp"
+            android:layout_marginRight="24dp"
+            android:gravity="center"
+            android:text="Content"
+            android:textColor="@color/text_color_black3"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.social.socialcommunication.custom_view.CustomButtonFont
+            android:id="@+id/btnAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_input_primary_rd_34"
+            android:textAllCaps="false"
+            android:paddingRight="30dp"
+            android:paddingLeft="30dp"
+            android:outlineProvider="none"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvContentPopup" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
