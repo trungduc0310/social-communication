@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="44dp"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:padding="8dp"
         android:src="@drawable/ic_arrow_left_blue"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,6 +48,7 @@
     <com.social.socialcommunication.custom_view.CustomTextviewFont
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="Nguyễn Hoàng Trường"
@@ -56,6 +57,16 @@
         app:font_type="@string/typeface_bold"
         app:layout_constraintBottom_toBottomOf="@id/btnBack"
         app:layout_constraintEnd_toStartOf="@id/btnCall"
+        app:layout_constraintStart_toEndOf="@id/imgUserAvatar"
+        app:layout_constraintTop_toTopOf="@id/btnBack" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgUserAvatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="0.5dp"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
         app:layout_constraintStart_toEndOf="@id/btnBack"
         app:layout_constraintTop_toTopOf="@id/btnBack" />
 

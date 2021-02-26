@@ -10,7 +10,12 @@
         android:roundIcon="@drawable/ic_app_medium"
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialCommunication">
-        <activity android:name=".screen.main.MainActivity">
+        <activity
+            android:name=".screen.main.MainActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"></activity>
+        <activity
+            android:name=".screen.splash.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

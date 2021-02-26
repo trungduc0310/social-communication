@@ -1,5 +1,7 @@
 package com.social.socialcommunication.screen.main
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -19,6 +21,11 @@ import kotlinx.android.synthetic.main.layout_header_main.*
 
 class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.ViewOps,
     View.OnClickListener {
+    companion object {
+        fun newInstance(context: Context) {
+            context.startActivity(Intent(context, MainActivity::class.java))
+        }
+    }
 
     private var mainPagerAdapter: MainPagerAdapter? = null
     override fun getViewResoure(): Int {

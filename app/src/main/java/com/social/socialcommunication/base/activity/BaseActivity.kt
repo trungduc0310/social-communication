@@ -2,6 +2,7 @@ package com.social.socialcommunication.base.activity
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -39,6 +40,10 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
             ex.printStackTrace()
         }
         setUp()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
     }
 
     private fun registerPresenter() {
