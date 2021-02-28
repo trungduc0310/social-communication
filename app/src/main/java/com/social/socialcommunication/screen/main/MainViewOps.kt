@@ -9,6 +9,5 @@ interface MainViewOps {
     }
 
     interface PresenterViewOps : ActivityPresenterViewOps {
-
     }
 }

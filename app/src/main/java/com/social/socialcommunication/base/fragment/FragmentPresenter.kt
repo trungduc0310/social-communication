@@ -7,6 +7,10 @@ open class FragmentPresenter<ViewTarget : FragmentViewOps> : BasePresenter<ViewT
     override fun onCreate() {
     }
 
+    override fun onStart() {
+
+    }
+
     override fun onPause() {
 
     }

@@ -22,4 +22,16 @@
     <string name="text_find">Tìm kiếm</string>
     <string name="text_contact">Danh bạ</string>
     <string name="text_input_messenger">Nhập tin nhắn...</string>
+    <string name="text_no_connect_internet">Không có kết nối mạng</string>
+    <string name="text_login_fail">Đăng nhập thất bại</string>
+    <string name="text_register_fail">Đăng ký thất bại</string>
+    <string name="text_login_with_gmail">Đăng nhập bằng Gmail</string>
+    <string name="text_me">Tôi</string>
+    <string name="text_user_profile">Tài khoản</string>
+    <string name="text_edit_profile">Chỉnh sửa thông tin</string>
+    <string name="text_support">Trợ giúp</string>
+    <string name="text_policy">Chính sách</string>
+    <string name="share_app">Chia sẻ ứng dụng</string>
+    <string name="intro_app">Giới thiệu ứng dụng</string>
+    <string name="text_logout">Đăng xuất</string>
 </resources>

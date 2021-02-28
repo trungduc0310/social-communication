@@ -14,8 +14,13 @@ import com.social.socialcommunication.R
 import com.social.socialcommunication.base.activity.ActivityPresenter
 import com.social.socialcommunication.base.activity.ActivityViewOps
 import com.social.socialcommunication.base.activity.BaseActivity
+import com.social.socialcommunication.common.ImageUtils
+import com.social.socialcommunication.common.SharedPrefUtils
+import com.social.socialcommunication.model.User
 import com.social.socialcommunication.screen.list_chat.ListChatFragment
 import com.social.socialcommunication.screen.list_contact.ListContactFragment
+import com.social.socialcommunication.screen.login.LoginFragment
+import com.social.socialcommunication.screen.profile.ProfileUserFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_header_main.*
 
@@ -28,18 +33,35 @@ class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.V
     }
 
     private var mainPagerAdapter: MainPagerAdapter? = null
+    private var userInfo: User? = null
     override fun getViewResoure(): Int {
         return R.layout.activity_main
     }
 
     override fun setUp() {
-        setUpViewPager()
-        setEventClick()
+        checkLogin()
+    }
+
+    private fun checkLogin() {
+        if (SharedPrefUtils.getInstance(this).isLogin()) {
+            replaceFragment(LoginFragment.getInstance(), true)
+        } else {
+            setDataOnView()
+            setUpViewPager()
+            setEventClick()
+        }
+    }
+
+    private fun setDataOnView() {
+        userInfo = SharedPrefUtils.getInstance(this).getAccount()
+        ImageUtils.loadImage(this, imgUserAvatar, userInfo?.getAvatar().toString())
     }
 
     private fun setEventClick() {
         tabChat.setOnClickListener(this)
         tabContact.setOnClickListener(this)
+        btnAddConversation.setOnClickListener(this)
+        imgUserAvatar.setOnClickListener(this)
     }
 
     private fun setUpViewPager() {
@@ -95,7 +117,7 @@ class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.V
     }
 
     override fun onRegisterPresenter(): Class<out ActivityPresenter<ActivityViewOps>> {
-        return MainPresenter::class.java
+        return MainPresenter::class.java as Class<out ActivityPresenter<ActivityViewOps>>
     }
 
     inner class MainPagerAdapter : FragmentStateAdapter {
@@ -143,6 +165,11 @@ class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.V
                     }
                 }
             }
+            R.id.imgUserAvatar -> {
+                replaceFragment(ProfileUserFragment.newInstance(userInfo!!), true)
+            }
         }
     }
+
+
 }

@@ -2,15 +2,13 @@ package com.social.socialcommunication.common
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.AlertDialog
-import android.app.DatePickerDialog
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.DatePicker
 import android.widget.EditText
-import android.widget.TextView
 import java.math.BigDecimal
 import java.text.*
 import java.util.*
@@ -83,31 +81,6 @@ class CommonUtils {
         @Throws(ParseException::class)
         fun convertDateToInt(date: Date): Int {
             return (date.time / 1000).toInt()
-        }
-
-        fun hideKeyboard(
-            context: Context,
-            view: View?
-        ) {
-            if (view != null) {
-                val imm =
-                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm?.hideSoftInputFromWindow(view.windowToken, 0)
-            }
-        }
-
-        fun showKeyboard(
-            context: Context,
-            view: View?
-        ) {
-            if (view != null) {
-                val imm =
-                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm?.showSoftInput(
-                    view,
-                    InputMethodManager.SHOW_IMPLICIT
-                )
-            }
         }
 
         fun showHideKeyBoard(
@@ -240,6 +213,15 @@ class CommonUtils {
                 e.printStackTrace()
             }
             return date
+        }
+
+        fun hasConnected(context: Context?): Boolean {
+            if (context == null) return true
+            val check =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val info = check.allNetworkInfo
+            for (networkInfo in info) if (networkInfo.state == NetworkInfo.State.CONNECTED) return true
+            return false
         }
     }
 }

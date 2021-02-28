@@ -2,6 +2,8 @@ package com.social.socialcommunication.common
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.gson.Gson
+import com.social.socialcommunication.model.User
 
 class SharedPrefUtils {
     private var context: Context? = null
@@ -28,22 +30,33 @@ class SharedPrefUtils {
 
     fun putString(key: String, value: String) {
         editor.putString(key, value)
+        editor.apply()
     }
 
     fun putInt(key: String, value: Int) {
         editor.putInt(key, value)
+        editor.apply()
     }
 
     fun putFloat(key: String, value: Float) {
         editor.putFloat(key, value)
+        editor.apply()
     }
 
     fun putLong(key: String, value: Long) {
         editor.putLong(key, value)
+        editor.apply()
     }
 
     fun putBoolean(key: String, value: Boolean) {
         editor.putBoolean(key, value)
+        editor.apply()
+    }
+
+    fun putAccount(value: User, token: String) {
+        editor.putString(Constant.USER, Gson().toJson(value))
+        editor.putString(Constant.TOKEN, token)
+        editor.apply()
     }
 
     fun getString(key: String): String {
@@ -64,6 +77,30 @@ class SharedPrefUtils {
 
     fun getBoolean(key: String): Boolean? {
         return sharedPreferences?.getBoolean(key, false)
+    }
+
+    fun getToken(): String {
+        return getString(Constant.TOKEN)
+    }
+
+    fun getAccount(): User? {
+        try {
+            val body = getString(Constant.USER)
+            return Gson().fromJson(body, User::class.java)
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+        return null
+    }
+
+    fun isLogin(): Boolean {
+        return getString(Constant.USER).isNotEmpty() && getString(Constant.TOKEN).isNotEmpty()
+    }
+
+    fun logout() {
+        editor.remove(Constant.USER)
+        editor.remove(Constant.TOKEN)
+        editor.apply()
     }
 
 }

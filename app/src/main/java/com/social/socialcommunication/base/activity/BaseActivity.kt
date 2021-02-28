@@ -1,16 +1,22 @@
 package com.social.socialcommunication.base.activity
 
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.google.android.material.snackbar.Snackbar
 import com.social.socialcommunication.BuildConfig
 import com.social.socialcommunication.R
 import com.social.socialcommunication.base.PresenterFactory
+import com.social.socialcommunication.common.CommonUtils
 import com.social.socialcommunication.dialog.LoadingDialog
 import com.tuanfadbg.takephotoutils.TakePhotoUtils
 
@@ -18,6 +24,7 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
     ActivityViewOps {
     public var mPresenter: P? = null
     private var takePhotoUtils: TakePhotoUtils? = null
+    private lateinit var mSnackBar: Snackbar
     fun getPresenter(): P {
         return mPresenter!!
     }
@@ -27,6 +34,22 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
     }
 
     private var mLoadingDialog: LoadingDialog? = null
+
+    private val mConnectReceiver = object : BroadcastReceiver() {
+        override fun onReceive(p0: Context?, p1: Intent?) {
+            if (p1?.action.equals("android.net.conn.CONNECTIVITY_CHANGE")) {
+                if (CommonUtils.hasConnected(p0!!)) {
+                    if (mSnackBar != null) {
+                        mSnackBar.show()
+                    }
+                } else {
+                    if (mSnackBar != null) {
+                        mSnackBar.dismiss()
+                    }
+                }
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +62,43 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
         } catch (ex: Exception) {
             ex.printStackTrace()
         }
+        setSnackBar()
         setUp()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (mSnackBar != null) {
+            if (CommonUtils.hasConnected(this)) mSnackBar.dismiss()
+        }
+    }
+
+    override fun onDestroy() {
+        try {
+            super.onDestroy()
+            unregisterReceiver(mConnectReceiver)
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+    }
+
+    private fun setSnackBar() {
+        try {
+            val view = window.decorView.findViewById<View>(android.R.id.content)
+            if (view != null) {
+                mSnackBar = Snackbar.make(
+                    view,
+                    getString(R.string.text_no_connect_internet),
+                    Snackbar.LENGTH_INDEFINITE
+                )
+                registerReceiver(
+                    mConnectReceiver,
+                    IntentFilter("android.net.conn.CONNECTIVITY_CHANGE")
+                )
+            }
+        } catch (ex: Exception) {
+
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "645311262663",
+    "firebase_url": "https://social-communication-de744-default-rtdb.firebaseio.com",
+    "project_id": "social-communication-de744",
+    "storage_bucket": "social-communication-de744.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645311262663:android:1c819cf5c39179a761f3e2",
+        "android_client_info": {
+          "package_name": "com.social.socialcommunication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645311262663-tunq3fvlg28ft65ec9f50d8mlrf15dml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.social.socialcommunication",
+            "certificate_hash": "c08a7bd0ec2b545ed45474800c95b1ec3cbd0c71"
+          }
+        },
+        {
+          "client_id": "645311262663-98v2akpcvogk48j5oh4m03lq6kse7flm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNiZvmyTD3u6qxoAB41kYuYg__Wa6tgiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645311262663-98v2akpcvogk48j5oh4m03lq6kse7flm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

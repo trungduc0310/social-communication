@@ -7,6 +7,10 @@ open class ActivityPresenter<ViewTarget : ActivityViewOps> : BasePresenter<ViewT
     override fun onCreate() {
     }
 
+    override fun onStart() {
+
+    }
+
     override fun onResume() {
 
     }
