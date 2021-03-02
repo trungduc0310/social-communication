@@ -2,8 +2,6 @@ package com.social.socialcommunication.screen.main
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -27,8 +25,8 @@ import kotlinx.android.synthetic.main.layout_header_main.*
 class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.ViewOps,
     View.OnClickListener {
     companion object {
-        fun newInstance(context: Context) {
-            context.startActivity(Intent(context, MainActivity::class.java))
+        fun newInstance(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
         }
     }
 
@@ -43,18 +41,16 @@ class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.V
     }
 
     private fun checkLogin() {
-        if (SharedPrefUtils.getInstance(this).isLogin()) {
-            replaceFragment(LoginFragment.getInstance(), true)
-        } else {
-            setDataOnView()
-            setUpViewPager()
-            setEventClick()
-        }
+        setDataOnView()
+        setUpViewPager()
+        setEventClick()
     }
 
     private fun setDataOnView() {
         userInfo = SharedPrefUtils.getInstance(this).getAccount()
-        ImageUtils.loadImage(this, imgUserAvatar, userInfo?.getAvatar().toString())
+        val avatar = SharedPrefUtils.getInstance(this).getAvatar()
+        userInfo?.avatar = avatar
+        ImageUtils.loadImage(this, imgUserAvatar, avatar!!)
     }
 
     private fun setEventClick() {
@@ -169,6 +165,15 @@ class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.V
                 replaceFragment(ProfileUserFragment.newInstance(userInfo!!), true)
             }
         }
+    }
+
+    override fun onBackPressed() {
+        hideLoading()
+        val fragment = supportFragmentManager.findFragmentById(R.id.main_layout)
+        if (fragment is LoginFragment && fragment.isVisible) {
+            return
+        }
+        super.onBackPressed()
     }
 
 

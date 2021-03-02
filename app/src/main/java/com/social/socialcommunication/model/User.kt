@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName
 import com.stfalcon.chatkit.commons.models.IUser
 
 class User : IUser {
-    @SerializedName("avatar")
     var avatar: Uri? = null
 
     @SerializedName("nameUser")
@@ -20,8 +19,9 @@ class User : IUser {
     @SerializedName("email")
     var email: String? = ""
 
+
     override fun getAvatar(): String {
-        return avatar?.path.toString()
+        return avatar.toString()
     }
 
     override fun getName(): String {

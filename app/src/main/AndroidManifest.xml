@@ -11,6 +11,11 @@
         android:roundIcon="@drawable/ic_app_medium"
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialCommunication">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="IzaSyDNiZvmyTD3u6qxoAB41kYuYg__Wa6tgiE" />
+
         <activity
             android:name=".screen.main.MainActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"></activity>

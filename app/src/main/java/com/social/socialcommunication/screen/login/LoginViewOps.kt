@@ -1,5 +1,6 @@
 package com.social.socialcommunication.screen.login
 
+import android.content.Context
 import com.social.socialcommunication.base.BasePresenterOps
 import com.social.socialcommunication.base.BaseViewOps
 import com.social.socialcommunication.base.fragment.FragmentPresenterViewOps
@@ -14,7 +15,7 @@ interface LoginViewOps {
     }
 
     interface PresenterViewOps : FragmentPresenterViewOps {
-        fun loginEmail(email: String, password: String)
-        fun loginGmailWithToken(token: String)
+        fun loginEmail(context: Context, email: String, password: String)
+        fun loginGmailWithToken(context: Context, token: String)
     }
 }

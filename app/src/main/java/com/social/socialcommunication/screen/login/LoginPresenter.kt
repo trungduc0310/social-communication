@@ -12,33 +12,36 @@ import com.social.socialcommunication.model.User
 class LoginPresenter : FragmentPresenter<LoginViewOps.ViewOps>, LoginViewOps.PresenterViewOps {
 
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var context: Context
 
-    constructor(context: Context) : super() {
-        this.context = context
-    }
+    constructor()
+
 
     override fun onCreate() {
         super.onCreate()
         mAuth = FirebaseAuth.getInstance()
     }
 
-    override fun loginEmail(email: String, password: String) {
+    override fun loginEmail(context: Context, email: String, password: String) {
         getView()?.onShowLoading()
         mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 getView()?.onHideLoading()
                 if (it.isSuccessful) {
                     val userInfo = mAuth.currentUser
-                    val token = FirebaseInstanceId.getInstance().token.toString()
                     var user = User()
-                    user.avatar = userInfo?.photoUrl
+                    val avatar = userInfo?.photoUrl
                     user.email = userInfo?.email
                     user.idUser = userInfo?.uid
                     user.nameUser = userInfo?.displayName
                     user.phoneNumber = userInfo?.phoneNumber
-                    SharedPrefUtils.getInstance(context).putAccount(user, token)
-                    getView()?.onLoginSuccess()
+                    userInfo?.getIdToken(true)?.addOnCompleteListener {
+                        val token = it.result?.token.toString()
+                        SharedPrefUtils.getInstance(context).putAccount(user, token, avatar)
+                        getView()?.onLoginSuccess()
+                    }
+                        ?.addOnFailureListener {
+                            getView()?.onLoginFail(context.resources.getString(R.string.text_token_fail))
+                        }
                 } else {
                     getView()?.onLoginFail(context.resources.getString(R.string.text_login_fail))
                 }
@@ -49,7 +52,7 @@ class LoginPresenter : FragmentPresenter<LoginViewOps.ViewOps>, LoginViewOps.Pre
             }
     }
 
-    override fun loginGmailWithToken(token: String) {
+    override fun loginGmailWithToken(context: Context, token: String) {
         getView()?.onShowLoading()
         val credential = GoogleAuthProvider.getCredential(token, null)
         mAuth.signInWithCredential(credential)
@@ -57,14 +60,14 @@ class LoginPresenter : FragmentPresenter<LoginViewOps.ViewOps>, LoginViewOps.Pre
                 getView()?.onHideLoading()
                 if (it.isSuccessful) {
                     val userInfo = mAuth.currentUser
-                    val token = FirebaseInstanceId.getInstance().token.toString()
                     var user = User()
-                    user.avatar = userInfo?.photoUrl
+                    val avatar = userInfo?.photoUrl
                     user.email = userInfo?.email
                     user.idUser = userInfo?.uid
                     user.nameUser = userInfo?.displayName
                     user.phoneNumber = userInfo?.phoneNumber
-                    SharedPrefUtils.getInstance(context).putAccount(user, token)
+                    SharedPrefUtils.getInstance(context).putAccount(user, token, avatar)
+                    getView()?.onLoginSuccess()
                 } else {
                     getView()?.onLoginFail(context.resources.getString(R.string.text_login_fail))
                 }

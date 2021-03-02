@@ -38,7 +38,7 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
     private val mConnectReceiver = object : BroadcastReceiver() {
         override fun onReceive(p0: Context?, p1: Intent?) {
             if (p1?.action.equals("android.net.conn.CONNECTIVITY_CHANGE")) {
-                if (CommonUtils.hasConnected(p0!!)) {
+                if (!CommonUtils.hasConnected(p0!!)) {
                     if (mSnackBar != null) {
                         mSnackBar.show()
                     }
@@ -97,7 +97,7 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
                 )
             }
         } catch (ex: Exception) {
-
+            ex.printStackTrace()
         }
     }
 
@@ -185,7 +185,7 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
         replaceFragment(
             manager,
             fragment,
-            R.id.main_layout,
+            android.R.id.content,
             addBackStack,
             enter,
             exit,
@@ -220,7 +220,7 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
 
     override fun replaceFragment(fragment: Fragment, addBackStack: Boolean) {
         replaceFragment(
-            supportFragmentManager, fragment, R.id.main_layout, addBackStack, R.anim.from_right,
+            supportFragmentManager, fragment, android.R.id.content, addBackStack, R.anim.from_right,
             R.anim.to_left,
             R.anim.from_left,
             R.anim.to_right
@@ -255,7 +255,7 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
 
     override fun addFragment(fragment: Fragment, addBackStack: Boolean) {
         addFragment(
-            supportFragmentManager, fragment, R.id.main_layout, addBackStack, R.anim.from_right,
+            supportFragmentManager, fragment, android.R.id.content, addBackStack, R.anim.from_right,
             R.anim.to_left,
             R.anim.from_left,
             R.anim.to_right
@@ -335,8 +335,8 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
             if (mLoadingDialog != null) {
                 mLoadingDialog?.dismiss()
             }
-            mLoadingDialog = LoadingDialog()
-            mLoadingDialog?.show(supportFragmentManager, mLoadingDialog?.javaClass?.simpleName)
+            mLoadingDialog = LoadingDialog(this, android.R.style.Theme_Translucent_NoTitleBar)
+            mLoadingDialog?.show()
         } catch (ex: Exception) {
             ex.printStackTrace()
         }

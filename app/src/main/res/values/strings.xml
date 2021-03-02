@@ -16,7 +16,7 @@
     <string name="text_gender_man">Nam</string>
     <string name="text_gender_female">Nữ</string>
     <string name="text_phone_number">Số điện thoại (*)</string>
-    <string name="text_email">Email</string>
+    <string name="text_email">Email (*)</string>
     <string name="text_create_account">Tạo mới</string>
     <string name="text_chat">Chat</string>
     <string name="text_find">Tìm kiếm</string>
@@ -34,4 +34,19 @@
     <string name="share_app">Chia sẻ ứng dụng</string>
     <string name="intro_app">Giới thiệu ứng dụng</string>
     <string name="text_logout">Đăng xuất</string>
+    <string name="text_info">Thông tin</string>
+    <string name="text_save">Lưu</string>
+    <string name="text_save_info">Lưu thông tin</string>
+    <string name="value_id_token">645311262663-98v2akpcvogk48j5oh4m03lq6kse7flm.apps.googleusercontent.com</string>
+    <string name="text_token_fail">Không lấy được token</string>
+    <string name="text_user_name_empty">Tên người dùng không được bỏ trống</string>
+    <string name="text_email_empty">Email không thể để trống</string>
+    <string name="text_password_empty">Không thể để trống mật khẩu</string>
+    <string name="text_input_email_forgot_password">Nhập email để lấy lại mật khẩu (*)</string>
+    <string name="text_confirm">Đồng ý</string>
+    <string name="text_send_code">Gửi đi</string>
+    <string name="text_cancel">Hủy</string>
+    <string name="text_empty_data_chat">Chưa có cuộc trò chuyện</string>
+    <string name="text_empty_data_contact">Chưa có liên hệ nào</string>
+    <string name="text_open_contact">Mở danh bạ</string>
 </resources>

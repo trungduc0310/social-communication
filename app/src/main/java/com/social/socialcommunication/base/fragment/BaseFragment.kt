@@ -46,12 +46,13 @@ public abstract class BaseFragment<P : FragmentPresenterViewOps> : Fragment(), F
                 mRootView = inflater.inflate(getViewResoure(), container, false)
                 mRootView?.isClickable = true
                 mRootView?.setOnTouchListener { v, event ->
-                    if (v !is EditText)
+                    if (v !is EditText) {
                         CommonUtils.hideSoftKeyboard(activity!!)
-                    true
+                        true
+                    }
+                    false
                 }
                 mRootView?.isFocusableInTouchMode = true
-                setUp(mRootView!!)
                 mRootView
             } else {
                 mRootView
@@ -59,7 +60,12 @@ public abstract class BaseFragment<P : FragmentPresenterViewOps> : Fragment(), F
         } catch (ex: Exception) {
             ex.printStackTrace()
         }
-        return inflater.inflate(getViewResoure(), container, false)
+        return mRootView!!
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUp()
     }
 
     override fun onPause() {
@@ -336,7 +342,7 @@ public abstract class BaseFragment<P : FragmentPresenterViewOps> : Fragment(), F
     }
 
     abstract fun getViewResoure(): Int
-    abstract fun setUp(view: View)
+    abstract fun setUp()
 
     fun runOnUIThread(runnable: Runnable) {
         if (activity != null) {

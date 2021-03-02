@@ -2,6 +2,7 @@ package com.social.socialcommunication.common
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 import com.google.gson.Gson
 import com.social.socialcommunication.model.User
 
@@ -53,9 +54,10 @@ class SharedPrefUtils {
         editor.apply()
     }
 
-    fun putAccount(value: User, token: String) {
+    fun putAccount(value: User, token: String, uriAvt: Uri?) {
         editor.putString(Constant.USER, Gson().toJson(value))
         editor.putString(Constant.TOKEN, token)
+        editor.putString(Constant.AVATAR, uriAvt.toString())
         editor.apply()
     }
 
@@ -87,6 +89,16 @@ class SharedPrefUtils {
         try {
             val body = getString(Constant.USER)
             return Gson().fromJson(body, User::class.java)
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
+        return null
+    }
+
+    fun getAvatar(): Uri? {
+        try {
+            val body = getString(Constant.AVATAR)
+            return Uri.parse(body)
         } catch (ex: Exception) {
             ex.printStackTrace()
         }

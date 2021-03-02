@@ -18,7 +18,7 @@ class ListChatFragment : BaseFragment<ListChatViewOps.PresenterViewOps>(), ListC
         return R.layout.fragment_list_chat
     }
 
-    override fun setUp(view: View) {
+    override fun setUp() {
     }
 
     override fun onRegisterPresenter(): Class<out FragmentPresenter<FragmentViewOps>> {

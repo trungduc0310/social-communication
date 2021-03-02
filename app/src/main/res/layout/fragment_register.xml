@@ -21,7 +21,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="31dp"
-                android:src="@drawable/ic_arrow_left"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:src="@drawable/ic_arrow_left_black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,94 +61,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtTitleInputFullName" />
 
             <com.social.socialcommunication.custom_view.CustomTextviewFont
-                android:id="@+id/txtTitleInputBirthday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="@string/text_birthday"
-                android:textColor="@color/text_color_gray1"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtInputFullName" />
-
-            <com.social.socialcommunication.custom_view.CustomEdittextFont
-                android:id="@+id/edtInputBirthday"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:maxLines="1"
-                android:textColor="@color/text_color_black2"
-                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputBirthday" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_calendar_gray"
-                app:layout_constraintBottom_toBottomOf="@id/edtInputBirthday"
-                app:layout_constraintEnd_toEndOf="@id/edtInputBirthday"
-                app:layout_constraintTop_toTopOf="@id/edtInputBirthday" />
-
-            <com.social.socialcommunication.custom_view.CustomTextviewFont
-                android:id="@+id/txtTitleInputGender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="@string/text_gender"
-                android:textColor="@color/text_color_gray1"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtInputBirthday" />
-
-            <RadioGroup
-                android:id="@+id/rbtn_gr_gender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                app:layout_constraintTop_toBottomOf="@id/txtTitleInputGender">
-
-                <com.social.socialcommunication.custom_view.CustomRadiobuttonFont
-                    android:id="@+id/rbtn_gender_man"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:text="@string/text_gender_man"
-                    android:textColor="@color/text_color_black1"
-                    android:theme="@style/CustomThemeRadioButton" />
-
-                <com.social.socialcommunication.custom_view.CustomRadiobuttonFont
-                    android:id="@+id/rbtn_gender_female"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/text_gender_female"
-                    android:textColor="@color/text_color_black1"
-                    android:theme="@style/CustomThemeRadioButton" />
-            </RadioGroup>
-
-            <com.social.socialcommunication.custom_view.CustomTextviewFont
-                android:id="@+id/txtTitleInputPhoneNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="@string/text_phone_number"
-                android:textColor="@color/text_color_gray1"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rbtn_gr_gender" />
-
-            <com.social.socialcommunication.custom_view.CustomEdittextFont
-                android:id="@+id/edtInputPhoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:maxLines="1"
-                android:textColor="@color/text_color_black2"
-                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputPhoneNumber" />
-
-            <com.social.socialcommunication.custom_view.CustomTextviewFont
                 android:id="@+id/txtTitleInputEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -154,7 +69,7 @@
                 android:textColor="@color/text_color_gray1"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtInputPhoneNumber" />
+                app:layout_constraintTop_toBottomOf="@+id/edtInputFullName" />
 
             <com.social.socialcommunication.custom_view.CustomEdittextFont
                 android:id="@+id/edtInputEmail"
@@ -191,6 +106,7 @@
                 android:id="@+id/btnShowHidePassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
                 android:src="@drawable/ic_no_view_password"
                 app:layout_constraintBottom_toBottomOf="@id/edtInputPassword"
                 app:layout_constraintEnd_toEndOf="@id/edtInputPassword"
@@ -200,11 +116,11 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.social.socialcommunication.custom_view.CustomTextviewFont
+        android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/bg_button_create_account"
-        android:enabled="false"
         android:gravity="center"
         android:paddingTop="13dp"
         android:paddingBottom="13dp"

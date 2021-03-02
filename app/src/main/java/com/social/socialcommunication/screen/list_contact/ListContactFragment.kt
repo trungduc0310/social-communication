@@ -18,7 +18,7 @@ class ListContactFragment : BaseFragment<ListContactViewOps.PresenterViewOps>(),
         return R.layout.fragment_list_contact
     }
 
-    override fun setUp(view: View) {
+    override fun setUp() {
     }
 
     override fun onRegisterPresenter(): Class<out FragmentPresenter<FragmentViewOps>> {

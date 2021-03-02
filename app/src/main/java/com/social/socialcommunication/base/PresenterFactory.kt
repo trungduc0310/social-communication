@@ -29,7 +29,7 @@ class PresenterFactory {
     fun createPresenter(
         presenterId: String,
         baseView: BaseViewOps
-    ): BasePresenterOps? {
+    ): BasePresenterOps {
         val clazz = mRegisterPresenters[presenterId]
         var `object`: BasePresenter<*>? = null
         try {
@@ -40,6 +40,6 @@ class PresenterFactory {
         } catch (e: IllegalAccessException) {
         } catch (e: NullPointerException) {
         }
-        return `object`
+        return `object`!!
     }
 }

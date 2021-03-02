@@ -15,19 +15,15 @@ class RegisterPresenter : FragmentPresenter<RegisterViewOps.ViewOps>,
     RegisterViewOps.PresenterViewOps {
 
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var context: Context
 
-    constructor(context: Context) : super() {
-        this.context = context
-    }
-
+    constructor()
 
     override fun onCreate() {
         super.onCreate()
         mAuth = FirebaseAuth.getInstance()
     }
 
-    override fun registerEmail(user: User, password: String) {
+    override fun registerEmail(context: Context, user: User, password: String) {
         getView()?.onShowLoading()
         val email = user.email.toString()
         mAuth.createUserWithEmailAndPassword(email, password)

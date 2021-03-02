@@ -25,7 +25,7 @@ class ChatFragment : BaseFragment<ChatViewOps.PresenterViewOps>(), ChatViewOps.V
         return R.layout.fragment_chat_messenger
     }
 
-    override fun setUp(view: View) {
+    override fun setUp() {
         imageLoader = ImageLoader { imageView, url, payload ->
             ImageUtils.loadImage(
                 context!!,

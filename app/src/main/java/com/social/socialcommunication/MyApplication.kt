@@ -26,13 +26,13 @@ class MyApplication : MultiDexApplication() {
         val asynTask = object : AsyncTask<Void, Void, Void>() {
             override fun doInBackground(vararg p0: Void?): Void? {
                 typefaceLight =
-                    Typeface.createFromAsset(assets, "fonts/quicksand/quicksand_light.ttf")
+                    Typeface.createFromAsset(assets, "quicksand/quicksand_light.ttf")
                 typefaceRegular =
-                    Typeface.createFromAsset(assets, "fonts/quicksand/quicksand_regular.ttf")
+                    Typeface.createFromAsset(assets, "quicksand/quicksand_regular.ttf")
                 typeFaceMedium =
-                    Typeface.createFromAsset(assets, "fonts/quicksand/quicksand_medium.ttf")
+                    Typeface.createFromAsset(assets, "quicksand/quicksand_medium.ttf")
                 typefaceBold =
-                    Typeface.createFromAsset(assets, "fonts/quicksand/quicksand_bold.ttf")
+                    Typeface.createFromAsset(assets, "quicksand/quicksand_bold.ttf")
                 return null
             }
 

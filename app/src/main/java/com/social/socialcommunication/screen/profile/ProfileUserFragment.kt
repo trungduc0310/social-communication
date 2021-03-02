@@ -8,6 +8,7 @@ import com.social.socialcommunication.base.fragment.FragmentPresenter
 import com.social.socialcommunication.base.fragment.FragmentViewOps
 import com.social.socialcommunication.common.ImageUtils
 import com.social.socialcommunication.model.User
+import com.social.socialcommunication.screen.splash.SplashActivity
 import kotlinx.android.synthetic.main.fragment_user_info.*
 
 class ProfileUserFragment : BaseFragment<ProfileViewOps.PresenterViewOps>,
@@ -30,7 +31,7 @@ class ProfileUserFragment : BaseFragment<ProfileViewOps.PresenterViewOps>,
         return R.layout.fragment_user_info
     }
 
-    override fun setUp(view: View) {
+    override fun setUp() {
         setEventClick()
         setDataOnView()
         setListSetting()
@@ -45,6 +46,7 @@ class ProfileUserFragment : BaseFragment<ProfileViewOps.PresenterViewOps>,
 
     private fun setEventClick() {
         btnBack.setOnClickListener(this)
+        btnLogout.setOnClickListener(this)
     }
 
     private fun setListSetting() {
@@ -60,29 +62,29 @@ class ProfileUserFragment : BaseFragment<ProfileViewOps.PresenterViewOps>,
     }
 
     override fun onEditAccount() {
-        TODO("Not yet implemented")
     }
 
     override fun onSupport() {
-        TODO("Not yet implemented")
     }
 
     override fun onPolicy() {
-        TODO("Not yet implemented")
     }
 
     override fun onIntroApp() {
-        TODO("Not yet implemented")
     }
 
     override fun onShareApp() {
-        TODO("Not yet implemented")
     }
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.btnBack -> {
                 getActivityReference()?.onBackPressed()
+            }
+            R.id.btnLogout -> {
+                mPresenter?.logoutApp(getActivityContext()!!)
+                startActivity(SplashActivity.getInstance(getActivityContext()!!))
+                getActivityReference()?.finish()
             }
         }
     }

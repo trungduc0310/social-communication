@@ -12,7 +12,7 @@ class CustomButtonFont : androidx.appcompat.widget.AppCompatButton {
         var currentColor = Color.BLACK
     }
 
-    private var typeFont = "fonts/SourceSansPro-Regular.otf"
+    private var typeFont = "quicksand/quicksand_medium.ttf"
 
     constructor(context: Context?) : super(context!!)
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs) {
