@@ -1,12 +1,12 @@
 package com.social.socialcommunication.screen.register
 
 import android.content.Context
+import android.net.Uri
 import android.os.Parcelable
 import android.util.Log
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.auth.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.social.socialcommunication.R
 import com.social.socialcommunication.base.fragment.FragmentPresenter
 import com.social.socialcommunication.model.User
@@ -15,6 +15,7 @@ class RegisterPresenter : FragmentPresenter<RegisterViewOps.ViewOps>,
     RegisterViewOps.PresenterViewOps {
 
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var mReference: DatabaseReference
 
     constructor()
 
@@ -33,10 +34,18 @@ class RegisterPresenter : FragmentPresenter<RegisterViewOps.ViewOps>,
                     var userInfo = mAuth.currentUser
                     val profileUpdate = UserProfileChangeRequest.Builder()
                         .setDisplayName(user.nameUser)
-                        .setPhotoUri(user.avatar)
+                        .setPhotoUri(Uri.parse(user.avatar))
                         .build()
-                    userInfo?.updateProfile(profileUpdate)
-                    getView()?.onRegisterSuccess()
+                    userInfo?.updateProfile(profileUpdate)?.addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            addMember(context, userInfo)
+                        } else {
+                            getView()?.onRegisterFail(context.getString(R.string.text_register_fail))
+                        }
+                    }
+                        ?.addOnFailureListener {
+                            getView()?.onRegisterFail(it.message.toString())
+                        }
                 } else {
                     getView()?.onRegisterFail(context.getString(R.string.text_register_fail))
                 }
@@ -45,5 +54,26 @@ class RegisterPresenter : FragmentPresenter<RegisterViewOps.ViewOps>,
                 getView()?.onHideLoading()
                 getView()?.onRegisterFail(it.message.toString())
             }
+    }
+
+    override fun addMember(context: Context, user: FirebaseUser) {
+        mReference = FirebaseDatabase.getInstance().getReference("Users").child(user.uid)
+        var infoUser = HashMap<String, String>()
+        infoUser["idUser"] = user.uid
+        infoUser["email"] = user.email.toString()
+        infoUser["nameUser"] = user.displayName.toString()
+        infoUser["avatar"] = user.photoUrl.toString()
+        infoUser["phoneNumber"] = user.phoneNumber.toString()
+        mReference.setValue(infoUser).addOnCompleteListener {
+            if (it.isSuccessful) {
+                getView()?.onRegisterSuccess()
+            } else {
+                getView()?.onRegisterFail(context.getString(R.string.text_register_fail))
+            }
+        }
+            .addOnFailureListener {
+                getView()?.onRegisterFail(it.message.toString())
+            }
+
     }
 }

@@ -66,7 +66,7 @@ class RegisterFragment : BaseFragment<RegisterViewOps.PresenterViewOps>(), Regis
                 val password = edtInputPassword.text.toString()
                 if (registerUser(userName, email, password)) {
                     val userInfo = User()
-                    userInfo.avatar = userAvt
+                    userInfo.avatar = userAvt.toString()
                     userInfo.email = email
                     userInfo.nameUser = userName
                     mPresenter?.registerEmail(getActivityContext()!!, userInfo, password)

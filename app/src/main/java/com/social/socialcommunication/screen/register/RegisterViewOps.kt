@@ -1,6 +1,7 @@
 package com.social.socialcommunication.screen.register
 
 import android.content.Context
+import com.google.firebase.auth.FirebaseUser
 import com.social.socialcommunication.base.fragment.FragmentPresenterViewOps
 import com.social.socialcommunication.base.fragment.FragmentViewOps
 import com.social.socialcommunication.model.User
@@ -15,5 +16,6 @@ interface RegisterViewOps {
 
     interface PresenterViewOps : FragmentPresenterViewOps {
         fun registerEmail(context: Context, user: User, password: String)
+        fun addMember(context: Context, user: FirebaseUser)
     }
 }

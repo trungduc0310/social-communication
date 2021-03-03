@@ -1,5 +1,6 @@
 package com.social.socialcommunication.screen.profile
 
+import android.net.Uri
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.social.socialcommunication.R
@@ -38,7 +39,7 @@ class ProfileUserFragment : BaseFragment<ProfileViewOps.PresenterViewOps>,
     }
 
     private fun setDataOnView() {
-        val avtPath = userInfo?.getAvatar().toString()
+        val avtPath = Uri.parse(userInfo?.avatar)
         val userName = userInfo?.nameUser.toString()
         ImageUtils.loadImage(context!!, imgUserAvatar, avtPath)
         tvUserName.text = userName

@@ -49,7 +49,7 @@ class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.V
     private fun setDataOnView() {
         userInfo = SharedPrefUtils.getInstance(this).getAccount()
         val avatar = SharedPrefUtils.getInstance(this).getAvatar()
-        userInfo?.avatar = avatar
+        userInfo?.avatar = avatar.toString()
         ImageUtils.loadImage(this, imgUserAvatar, avatar!!)
     }
 

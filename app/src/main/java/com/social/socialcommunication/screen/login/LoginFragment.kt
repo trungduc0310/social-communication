@@ -111,7 +111,9 @@ class LoginFragment : BaseFragment<LoginViewOps.PresenterViewOps>(), LoginViewOp
             R.id.btnLogin -> {
                 val email = edtInputEmail.text.toString()
                 val password = edtInputPassword.text.toString()
-                mPresenter?.loginEmail(getActivityContext()!!, email, password)
+                if (loginEmail(email, password)) {
+                    mPresenter?.loginEmail(getActivityContext()!!, email, password)
+                }
             }
             R.id.btnToViewRegister -> {
                 replaceFragment(RegisterFragment.newInstance(), true)
@@ -120,6 +122,18 @@ class LoginFragment : BaseFragment<LoginViewOps.PresenterViewOps>(), LoginViewOp
                 ForgotPasswordDialog(getActivityContext()!!).show()
             }
         }
+    }
+
+    private fun loginEmail(email: String, password: String): Boolean {
+        if (email.isEmpty()) {
+            showToast(getString(R.string.text_email_empty))
+            return false
+        }
+        if (password.isEmpty()) {
+            showToast(getString(R.string.text_password_empty))
+            return false
+        }
+        return true
     }
 
 }

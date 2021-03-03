@@ -18,9 +18,16 @@ import kotlinx.android.synthetic.main.layout_header_chat.*
 class ChatFragment : BaseFragment<ChatViewOps.PresenterViewOps>(), ChatViewOps.ViewOps,
     MessagesListAdapter.SelectionListener, MessagesListAdapter.OnLoadMoreListener,
     View.OnClickListener {
+    companion object {
+        fun newInstance(): ChatFragment {
+            return ChatFragment()
+        }
+    }
+
     private lateinit var imageLoader: ImageLoader
     private val senderId = "0"
     private lateinit var messagesAdapter: MessagesListAdapter<Messenger>
+
     override fun getViewResoure(): Int {
         return R.layout.fragment_chat_messenger
     }
