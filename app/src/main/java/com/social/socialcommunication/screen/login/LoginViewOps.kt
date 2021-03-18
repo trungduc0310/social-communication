@@ -17,5 +17,6 @@ interface LoginViewOps {
     interface PresenterViewOps : FragmentPresenterViewOps {
         fun loginEmail(context: Context, email: String, password: String)
         fun loginGmailWithToken(context: Context, token: String)
+        fun forgotPassword(email: String)
     }
 }

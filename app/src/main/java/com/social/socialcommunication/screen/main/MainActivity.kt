@@ -16,18 +16,26 @@ import com.social.socialcommunication.common.ImageUtils
 import com.social.socialcommunication.common.SharedPrefUtils
 import com.social.socialcommunication.model.User
 import com.social.socialcommunication.screen.list_chat.ListChatFragment
+import com.social.socialcommunication.screen.list_contact.ListAllChatFragment
 import com.social.socialcommunication.screen.list_contact.ListContactFragment
 import com.social.socialcommunication.screen.login.LoginFragment
 import com.social.socialcommunication.screen.profile.ProfileUserFragment
+import com.stringee.StringeeClient
+import com.stringee.call.StringeeCall
+import com.stringee.exception.StringeeError
+import com.stringee.listener.StringeeConnectionListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_header_main.*
+import org.json.JSONObject
 
 class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.ViewOps,
     View.OnClickListener {
     companion object {
+        var stringeeClient: StringeeClient? = null
         fun newInstance(context: Context): Intent {
             return Intent(context, MainActivity::class.java)
         }
+
     }
 
     private var mainPagerAdapter: MainPagerAdapter? = null
@@ -37,8 +45,10 @@ class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.V
     }
 
     override fun setUp() {
+        stringeeClient = StringeeClient(this)
         checkLogin()
     }
+
 
     private fun checkLogin() {
         setDataOnView()
@@ -133,7 +143,7 @@ class MainActivity : BaseActivity<MainViewOps.PresenterViewOps>(), MainViewOps.V
                     ListChatFragment.newInstance()
                 }
                 1 -> {
-                    ListContactFragment.newInstance()
+                    ListAllChatFragment.newInstance()
                 }
                 else -> {
                     ListChatFragment.newInstance()

@@ -1,5 +1,6 @@
 package com.social.socialcommunication.screen.profile
 
+import android.content.Intent
 import android.net.Uri
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +11,7 @@ import com.social.socialcommunication.base.fragment.FragmentViewOps
 import com.social.socialcommunication.common.ImageUtils
 import com.social.socialcommunication.model.User
 import com.social.socialcommunication.screen.splash.SplashActivity
+import com.social.socialcommunication.screen.update_account.UpdateAccountFragment
 import kotlinx.android.synthetic.main.fragment_user_info.*
 
 class ProfileUserFragment : BaseFragment<ProfileViewOps.PresenterViewOps>,
@@ -63,6 +65,7 @@ class ProfileUserFragment : BaseFragment<ProfileViewOps.PresenterViewOps>,
     }
 
     override fun onEditAccount() {
+        replaceFragment(UpdateAccountFragment.newInstance(), true)
     }
 
     override fun onSupport() {
@@ -75,6 +78,11 @@ class ProfileUserFragment : BaseFragment<ProfileViewOps.PresenterViewOps>,
     }
 
     override fun onShareApp() {
+        val shareBody = "Mời bạn sử dụng ứng dụng Social Communication"
+        val sharingIntent = Intent(Intent.ACTION_SEND)
+        sharingIntent.type = "text/plain"
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+        startActivity(sharingIntent)
     }
 
     override fun onClick(p0: View?) {

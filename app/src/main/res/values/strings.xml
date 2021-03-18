@@ -49,4 +49,15 @@
     <string name="text_empty_data_chat">Chưa có cuộc trò chuyện</string>
     <string name="text_empty_data_contact">Chưa có liên hệ nào</string>
     <string name="text_open_contact">Mở danh bạ</string>
+    <string name="text_edit_name">Sửa tên người dùng</string>
+    <string name="text_input_name">Nhập tên</string>
+    <string name="text_accept">Xác nhận</string>
+    <string name="text_change_password">Đổi mật khẩu</string>
+    <string name="text_input_old_password">Nhập mật khẩu hiện tại (*)</string>
+    <string name="text_input_new_password">Nhập mật khẩu mới (*)</string>
+    <string name="text_input_renew_password">Nhập lại mật khẩu mới (*)</string>
+    <string name="text_edit_avatar">Thay đổi ảnh đại diện</string>
+    <string name="text_change_image_galery">Mở thư viện ảnh</string>
+    <string name="text_change_image_camera">Mở Camera</string>
+    <string name="text_update_phone_number"><u>Vui lòng cập nhật số điện thoại</u></string>
 </resources>

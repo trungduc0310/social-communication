@@ -360,7 +360,7 @@ public abstract class BaseFragment<P : FragmentPresenterViewOps> : Fragment(), F
 
     fun registerPresenter() {
         PresenterFactory.getInstance()
-            .registerPresenter(javaClass.simpleName, onRegisterPresenter())
+            .registerPresenter(PRESENTER_ID, onRegisterPresenter())
     }
 
     fun initPresenter() {

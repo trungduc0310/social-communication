@@ -8,9 +8,13 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.AsyncTask
 import android.os.Build
+import android.os.Bundle
 import android.provider.ContactsContract
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.social.socialcommunication.R
 import com.social.socialcommunication.base.OnItemClickListener
@@ -21,8 +25,7 @@ import com.social.socialcommunication.model.PhoneBook
 import kotlinx.android.synthetic.main.fragment_list_contact.*
 import java.io.BufferedInputStream
 
-class ListContactFragment : BaseFragment<ListContactViewOps.PresenterViewOps>(),
-    ListContactViewOps.ViewOps, View.OnClickListener {
+class ListContactFragment : Fragment(), View.OnClickListener {
     companion object {
         private val PERMISSIONS_REQUEST_READ_CONTACTS = 100
         fun newInstance(): ListContactFragment {
@@ -39,7 +42,6 @@ class ListContactFragment : BaseFragment<ListContactViewOps.PresenterViewOps>(),
         AsyncTask<Void?, Void?, Void?>() {
         override fun onPreExecute() {
             super.onPreExecute()
-            swipeRefreshLayout.isRefreshing = true
         }
 
         override fun doInBackground(vararg p0: Void?): Void? {
@@ -98,11 +100,19 @@ class ListContactFragment : BaseFragment<ListContactViewOps.PresenterViewOps>(),
 
     }
 
-    override fun getViewResoure(): Int {
-        return R.layout.fragment_list_contact
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view: View =
+            LayoutInflater.from(context!!)
+                .inflate(R.layout.fragment_list_contact, container, false);
+        return view;
     }
 
-    override fun setUp() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setEventClick()
         rcvListContact.layoutManager =
             LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
@@ -152,7 +162,7 @@ class ListContactFragment : BaseFragment<ListContactViewOps.PresenterViewOps>(),
     }
 
     private fun showContacts() {
-        phones = getApplicationContext()!!.contentResolver.query(
+        phones = activity!!.applicationContext.contentResolver.query(
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
             null,
             null,
@@ -161,10 +171,6 @@ class ListContactFragment : BaseFragment<ListContactViewOps.PresenterViewOps>(),
         )!!
         loadContact = LoadContact()
         loadContact.execute()
-    }
-
-    override fun onRegisterPresenter(): Class<out FragmentPresenter<FragmentViewOps>> {
-        return ListContactPresenter::class.java as Class<out FragmentPresenter<FragmentViewOps>>
     }
 
     override fun onClick(p0: View?) {

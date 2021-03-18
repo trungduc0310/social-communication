@@ -19,6 +19,15 @@ class ListChatAdapter : RecyclerView.Adapter<ListChatAdapter.ViewHolder>() {
         this.itemClickListener = itemClickListener
     }
 
+    fun clearListUser() {
+        this.listUser = ArrayList<User>()
+        notifyDataSetChanged()
+    }
+
+    fun getListUser(): ArrayList<User> {
+        return this.listUser
+    }
+
     fun setListUser(listUser: ArrayList<User>) {
         this.listUser = listUser
         notifyDataSetChanged()

@@ -3,8 +3,9 @@ package com.social.socialcommunication.model
 import android.net.Uri
 import com.google.gson.annotations.SerializedName
 import com.stfalcon.chatkit.commons.models.IUser
+import java.io.Serializable
 
-class User : IUser {
+class User : IUser, Serializable {
     private var avatar: String? = ""
 
     @SerializedName("nameUser")

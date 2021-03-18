@@ -6,9 +6,13 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.text.TextUtils
+import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
+import android.widget.*
+import com.social.socialcommunication.R
+import com.social.socialcommunication.custom_view.CustomTextviewFont
+import com.social.socialcommunication.dialog.OnButtonClickListener
 import java.math.BigDecimal
 import java.text.*
 import java.util.*
@@ -61,11 +65,27 @@ class CommonUtils {
             return formatDate
         }
 
-        fun getCurrentDate(): String? {
-            val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd")
+        fun getCurrentDateString(): String? {
+            val dateFormat: DateFormat =
+                SimpleDateFormat(Constant.APP_DEFAULT_HOUR_FORMAT)
             val date = Calendar.getInstance().time
             return dateFormat.format(date)
         }
+
+        fun getDateStringtoDate(date: String): Date? {
+            val dateFormat: DateFormat = SimpleDateFormat(Constant.APP_DEFAULT_HOUR_FORMAT)
+            return try {
+                dateFormat.parse(date)
+            } catch (ex: Exception) {
+                null
+            }
+        }
+
+        fun getCurrentDate(): Date? {
+            val date = Calendar.getInstance().time
+            return date
+        }
+
 
         @Throws(ParseException::class)
         fun formatDate(
@@ -135,10 +155,13 @@ class CommonUtils {
         }
 
         fun convertDateStringToString(
-            input: String?,
-            format: String?
+            input: String?
         ): String? {
-            return convertDateStringToString(input, format, "MMM dd")
+            return convertDateStringToString(
+                input,
+                "EEE MMM dd HH:mm:ss zzz yyyy",
+                Constant.APP_DEFAULT_HOUR_FORMAT
+            )
         }
 
         fun convertDateStringToString(
@@ -191,10 +214,9 @@ class CommonUtils {
 
 
         fun convertStringToDate(
-            input: String?,
-            format: String?
+            input: String?
         ): Date? {
-            val simpleDateFormat = SimpleDateFormat(format)
+            val simpleDateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
             try {
                 return simpleDateFormat.parse(input)
             } catch (e: ParseException) {
@@ -222,6 +244,28 @@ class CommonUtils {
             val info = check.allNetworkInfo
             for (networkInfo in info) if (networkInfo.state == NetworkInfo.State.CONNECTED) return true
             return false
+        }
+
+        fun showPopupButton(
+            context: Context,
+            view: View,
+            resoure: Int,
+            buttonContent: String,
+            buttonClick: OnButtonClickListener<Any?>
+        ) {
+            val mInflater =
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val layout = mInflater.inflate(resoure, null)
+            layout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
+            val popupWindow = PopupWindow(layout, 250, FrameLayout.LayoutParams.WRAP_CONTENT, true)
+            val btnAccept = layout.findViewById<LinearLayout>(R.id.btnAccept)
+            val content = layout.findViewById<CustomTextviewFont>(R.id.btnContentPopup)
+            content.text = buttonContent
+            popupWindow.showAsDropDown(view, 100, 5)
+            btnAccept.setOnClickListener {
+                buttonClick.onAcceptClickListener(null)
+                popupWindow.dismiss()
+            }
         }
     }
 }

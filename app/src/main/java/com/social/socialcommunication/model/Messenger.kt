@@ -12,26 +12,74 @@ class Messenger : IMessage {
     private lateinit var id: String
 
     @SerializedName("createAt")
-    private lateinit var createAt: String
+    private var createAt: Date? = null
 
-    @SerializedName("user")
+    @SerializedName("userSender")
     private lateinit var user: User
 
+    @SerializedName("userReceiver")
+    private lateinit var userReceiver: User
+
     @SerializedName("contentText")
-    private lateinit var contentText: String
+    private lateinit var text: String
+
+    @SerializedName("imageUrl")
+    private lateinit var imageUrl: String
+
+
+    var isSended = false
+
+    fun setImageUrl(imageUrl: String) {
+        this.imageUrl = imageUrl
+    }
+
+
+    fun setId(id: String) {
+        this.id = id
+    }
+
     override fun getId(): String {
         return id
     }
 
     override fun getCreatedAt(): Date {
-        return CommonUtils.convertStringToDate(createAt, Constant.APP_DEFAULT_DATE_FORMAT)!!
+        return createAt!!
+    }
+
+    fun setCreateAt(createAt: Date) {
+        this.createAt = createAt
+    }
+
+    fun setUser(userSender: User) {
+        this.user = userSender
+    }
+
+    fun getUserReceiver(): User {
+        return this.userReceiver
+    }
+
+    fun setUserReceiver(userReceiver: User) {
+        this.userReceiver = userReceiver
     }
 
     override fun getUser(): IUser {
-        return user
+        return this.user
+    }
+
+    fun setContentText(contentText: String) {
+        this.text = contentText
     }
 
     override fun getText(): String {
-        return contentText
+        return text
     }
+
+    fun setMessenger(cloneMessenger: CloneMessenger) {
+        this.id = cloneMessenger.id
+        this.user = cloneMessenger.userSender!!
+        this.userReceiver = cloneMessenger.userReceiver!!
+        this.createAt = CommonUtils.getDateStringtoDate(cloneMessenger.createAt.toString())
+        this.text = cloneMessenger.text
+    }
+
 }

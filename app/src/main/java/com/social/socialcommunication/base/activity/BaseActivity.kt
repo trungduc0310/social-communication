@@ -55,7 +55,7 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
         super.onCreate(savedInstanceState)
         setContentView(getViewResoure())
         try {
-            PRESENTER_ID = this::class.simpleName + System.currentTimeMillis()
+            PRESENTER_ID = this::class.simpleName
             registerPresenter()
             takePhotoUtils = TakePhotoUtils(this, BuildConfig.APPLICATION_ID + ".provider")
             mPresenter?.onCreate()
@@ -110,10 +110,7 @@ public abstract class BaseActivity<P : ActivityPresenterViewOps> : AppCompatActi
     }
 
     private fun initPresenter() {
-        mPresenter = PresenterFactory.getInstance().createPresenter(
-            PRESENTER_ID!!,
-            this
-        ) as P?
+        mPresenter = PresenterFactory.getInstance().createPresenter(PRESENTER_ID!!, this) as P?
     }
 
     override fun getActivityContext(): Context {

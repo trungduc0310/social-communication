@@ -11,8 +11,14 @@ import com.social.socialcommunication.base.activity.ActivityPresenterViewOps
 import com.social.socialcommunication.base.activity.ActivityViewOps
 import com.social.socialcommunication.common.Constant
 import com.social.socialcommunication.common.SharedPrefUtils
+import com.social.socialcommunication.model.ResponeTokenCall
 import com.social.socialcommunication.model.User
+import com.social.socialcommunication.service.ApiConnect
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainPresenter : ActivityPresenter<MainViewOps.ViewOps>(), MainViewOps.PresenterViewOps {
+
 
 }

@@ -5,7 +5,6 @@ import com.social.socialcommunication.base.activity.ActivityViewOps
 
 interface MainViewOps {
     interface ViewOps : ActivityViewOps {
-
     }
 
     interface PresenterViewOps : ActivityPresenterViewOps {

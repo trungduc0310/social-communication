@@ -20,4 +20,6 @@
     <color name="background_default">#323643</color>
     <color name="gray_line">#f2f2f2</color>
     <color name="background_gmail">#D54B3D</color>
+    <color name="green_success">#029C3C</color>
+    <color name="gray_opa_60">#993E3E3E</color>
 </resources>

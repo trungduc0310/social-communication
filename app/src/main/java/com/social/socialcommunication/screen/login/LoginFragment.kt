@@ -15,6 +15,7 @@ import com.social.socialcommunication.R
 import com.social.socialcommunication.base.fragment.BaseFragment
 import com.social.socialcommunication.base.fragment.FragmentPresenter
 import com.social.socialcommunication.base.fragment.FragmentViewOps
+import com.social.socialcommunication.dialog.OnButtonClickListener
 import com.social.socialcommunication.screen.forgot_password.ForgotPasswordDialog
 import com.social.socialcommunication.screen.main.MainActivity
 import com.social.socialcommunication.screen.register.RegisterFragment
@@ -119,7 +120,17 @@ class LoginFragment : BaseFragment<LoginViewOps.PresenterViewOps>(), LoginViewOp
                 replaceFragment(RegisterFragment.newInstance(), true)
             }
             R.id.txtForgotPassword -> {
-                ForgotPasswordDialog(getActivityContext()!!).show()
+                val forgotDialog = ForgotPasswordDialog(getActivityContext()!!)
+                forgotDialog.setButtonClickListener(object : OnButtonClickListener<String> {
+                    override fun onAcceptClickListener(value: String) {
+                        mPresenter?.forgotPassword(value)
+                    }
+
+                    override fun onCancelClickListener() {
+                    }
+
+                })
+                forgotDialog.show()
             }
         }
     }

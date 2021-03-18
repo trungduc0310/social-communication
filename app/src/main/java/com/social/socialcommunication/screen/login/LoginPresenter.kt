@@ -11,13 +11,11 @@ import com.social.socialcommunication.base.fragment.FragmentPresenter
 import com.social.socialcommunication.common.SharedPrefUtils
 import com.social.socialcommunication.model.User
 
-class LoginPresenter : FragmentPresenter<LoginViewOps.ViewOps>, LoginViewOps.PresenterViewOps {
+class LoginPresenter : FragmentPresenter<LoginViewOps.ViewOps>(), LoginViewOps.PresenterViewOps {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mReference: DatabaseReference
     private lateinit var mReference2: DatabaseReference
-
-    constructor()
 
 
     override fun onCreate() {
@@ -84,6 +82,22 @@ class LoginPresenter : FragmentPresenter<LoginViewOps.ViewOps>, LoginViewOps.Pre
             }
     }
 
+    override fun forgotPassword(email: String) {
+        getView()?.onShowLoading()
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener {
+            getView()?.onHideLoading()
+            if (it.isSuccessful){
+                getView()?.showToast("Chúng tôi đã gửi yêu cầu tới $email vui lòng kiểm tra hộp thư của bạn.")
+            }else{
+                getView()?.showToast("Yêu cầu thất bại")
+            }
+        }
+            .addOnFailureListener {
+                getView()?.onHideLoading()
+                getView()?.showToast(it.message.toString())
+            }
+    }
+
     private fun addMember(user: User) {
         mReference = FirebaseDatabase.getInstance().getReference("Users")
         mReference2 = FirebaseDatabase.getInstance().getReference("Users").child(user.id)
@@ -113,4 +127,6 @@ class LoginPresenter : FragmentPresenter<LoginViewOps.ViewOps>, LoginViewOps.Pre
 
         })
     }
+
+
 }

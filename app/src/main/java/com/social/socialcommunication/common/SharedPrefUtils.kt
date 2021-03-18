@@ -61,6 +61,12 @@ class SharedPrefUtils {
         editor.apply()
     }
 
+    fun putAccount(value: User, uriAvt: Uri?) {
+        editor.putString(Constant.USER, Gson().toJson(value))
+        editor.putString(Constant.AVATAR, uriAvt.toString())
+        editor.apply()
+    }
+
     fun getString(key: String): String {
         return sharedPreferences?.getString(key, "").toString()
     }

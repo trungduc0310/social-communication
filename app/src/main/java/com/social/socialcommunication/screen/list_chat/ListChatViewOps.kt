@@ -8,9 +8,14 @@ interface ListChatViewOps {
     interface ViewOps : FragmentViewOps {
         fun getListUserSuccess(listUser: ArrayList<User>)
         fun getListUserFail(mess: String)
+        fun onGetTokenCall(token: String)
+        fun onGetTokenCallFail(mess: String)
     }
 
     interface PresenterViewOps : FragmentPresenterViewOps {
-        fun readUser(idUserLogin: String)
+        fun readUserHaveChat(idUserLogin: String)
+        fun readChat(userList: ArrayList<User>, idUserLogin: String)
+        fun getTokenCall(userId: String)
+
     }
 }

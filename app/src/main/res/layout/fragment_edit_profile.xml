@@ -92,70 +92,43 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvUserName" />
 
-            <com.social.socialcommunication.custom_view.CustomTextviewFont
-                android:id="@+id/txtTitleInputFullName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/text_full_name"
-                android:textColor="@color/gray3"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@id/txtProfile"
-                app:layout_constraintTop_toBottomOf="@+id/txtProfile" />
 
-            <com.social.socialcommunication.custom_view.CustomEdittextFont
-                android:id="@+id/edtInputFullName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:background="@color/background_default"
-                android:maxLines="1"
-                android:paddingLeft="8dp"
-                android:paddingTop="13dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="13dp"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/txtProfile"
-                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputFullName" />
+            <!--            <com.social.socialcommunication.custom_view.CustomTextviewFont-->
+            <!--                android:id="@+id/txtTitleInputBirthday"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="18dp"-->
+            <!--                android:text="@string/text_birthday"-->
+            <!--                android:textColor="@color/gray3"-->
+            <!--                android:textSize="12sp"-->
+            <!--                app:layout_constraintStart_toStartOf="@id/txtProfile"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/txtProfile" />-->
 
-            <com.social.socialcommunication.custom_view.CustomTextviewFont
-                android:id="@+id/txtTitleInputBirthday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="@string/text_birthday"
-                android:textColor="@color/gray3"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@id/txtProfile"
-                app:layout_constraintTop_toBottomOf="@+id/edtInputFullName" />
+            <!--            <com.social.socialcommunication.custom_view.CustomEdittextFont-->
+            <!--                android:id="@+id/edtInputBirthday"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:layout_marginRight="16dp"-->
+            <!--                android:background="@color/background_default"-->
+            <!--                android:maxLines="1"-->
+            <!--                android:paddingLeft="8dp"-->
+            <!--                android:paddingTop="13dp"-->
+            <!--                android:paddingRight="30dp"-->
+            <!--                android:paddingBottom="13dp"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="@id/txtProfile"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputBirthday" />-->
 
-            <com.social.socialcommunication.custom_view.CustomEdittextFont
-                android:id="@+id/edtInputBirthday"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:background="@color/background_default"
-                android:maxLines="1"
-                android:paddingLeft="8dp"
-                android:paddingTop="13dp"
-                android:paddingRight="30dp"
-                android:paddingBottom="13dp"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/txtProfile"
-                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputBirthday" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/ic_calendar_white"
-                app:layout_constraintBottom_toBottomOf="@id/edtInputBirthday"
-                app:layout_constraintEnd_toEndOf="@id/edtInputBirthday"
-                app:layout_constraintTop_toTopOf="@id/edtInputBirthday" />
+            <!--            <ImageView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginRight="8dp"-->
+            <!--                android:src="@drawable/ic_calendar_white"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@id/edtInputBirthday"-->
+            <!--                app:layout_constraintEnd_toEndOf="@id/edtInputBirthday"-->
+            <!--                app:layout_constraintTop_toTopOf="@id/edtInputBirthday" />-->
 
             <com.social.socialcommunication.custom_view.CustomTextviewFont
                 android:id="@+id/txtTitleInputPhoneNumber"
@@ -166,7 +139,7 @@
                 android:textColor="@color/gray3"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@id/txtProfile"
-                app:layout_constraintTop_toBottomOf="@+id/edtInputBirthday" />
+                app:layout_constraintTop_toBottomOf="@+id/txtProfile" />
 
             <com.social.socialcommunication.custom_view.CustomEdittextFont
                 android:id="@+id/edtInputPhoneNumber"
@@ -182,6 +155,21 @@
                 android:paddingRight="8dp"
                 android:paddingBottom="13dp"
                 android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/txtProfile"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitleInputPhoneNumber" />
+
+            <com.social.socialcommunication.custom_view.CustomTextviewFont
+                android:id="@+id/btnAddPhoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:background="@color/background_default"
+                android:maxLines="1"
+                android:text="@string/text_update_phone_number"
+                android:textColor="@color/blueDark"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/txtProfile"
                 app:layout_constraintTop_toBottomOf="@+id/txtTitleInputPhoneNumber" />
@@ -204,12 +192,13 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="16dp"
                 android:background="@color/background_default"
+                android:enabled="false"
                 android:maxLines="1"
                 android:paddingLeft="8dp"
                 android:paddingTop="13dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="13dp"
-                android:textColor="@color/text_color_black2"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/txtProfile"
                 app:layout_constraintTop_toBottomOf="@+id/txtTitleInputEmail" />
@@ -218,7 +207,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <RelativeLayout
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blueDark"
